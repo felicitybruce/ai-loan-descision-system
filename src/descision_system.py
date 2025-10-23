@@ -1,13 +1,12 @@
 import pandas as pd
-# Omar to impl
-from src.ml_model_training import MLModelTrainer
-# Omar to impl x2
-from src.rule_engine import RuleEngine
-from src.data_preprocessing import DataPreprocessor
+from ml_model_training import MLModelTrainer
+from rule_engine import RuleEngine
+from data_preprocessing import DataPreprocessor
+import joblib
 
 class LoanDecisionSystem:
-    def __init__(self, model_path="logistic_regression_model.joblib"):
-        self.ml_model = MLModelTrainer.load_model(model_path)
+    def __init__(self, model_path="models/logistic_regression_model.joblib"):
+        self.ml_model = joblib.load(model_path)
         if self.ml_model is None:
             print("Model not loaded. Train and save the model first.")
             raise Exception("Model not loaded.")
