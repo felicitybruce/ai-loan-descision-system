@@ -7,7 +7,7 @@ import joblib
 
 class DataPreprocessor:
   # Default within 12 months y/n
-   def __init__(self, target_col="default_12m"):
+    def __init__(self, target_col="default_12m"):
         # Column name want to predict (e.g., if a loan will default)
         self.target_col = target_col
         # Ficticious categories
@@ -19,7 +19,7 @@ class DataPreprocessor:
         # To clean
         self.preprocessor = self._build_preprocessor()
 
-def _build_preprocessor(self):
+    def _build_preprocessor(self):
         """Builds column transformer for preprocessing happenings"""
         return ColumnTransformer(
             transformers=[
@@ -32,11 +32,11 @@ def _build_preprocessor(self):
             remainder='passthrough'
         )        
 
-def load_and_split_data(self, filepath, test_size=0.25, random_state=42):
+    def load_and_split_data(self, filepath, test_size=0.25, random_state=42):
         """Loads data and splits it into training & testing """
         try:
             # Read data into dataframe
-            df = pd.read_csv(filepath)
+            df = pd.read_csv(filepath, sep="\t")  
         except FileNotFoundError:
             print(f"Error: Dataset not found at {filepath}")
             return None, None, None, None
@@ -61,32 +61,32 @@ def load_and_split_data(self, filepath, test_size=0.25, random_state=42):
         )
         return X_train, X_test, y_train, y_test
 
-def fit_preprocessor(self, X_train):
-    # Train preprocessor using training data
-    self.preprocessor.fit(X_train)
-    print("Data preprocessor fitted successfully.")
+    def fit_preprocessor(self, X_train):
+        # Train preprocessor using training data
+        self.preprocessor.fit(X_train)
+        print("Data preprocessor fitted successfully.")
 
-def transform_data(self, X):
-    # Apply fitted preprocessor to new data
-    return self.preprocessor.transform(X)
+    def transform_data(self, X):
+        # Apply fitted preprocessor to new data
+        return self.preprocessor.transform(X)
 
-def save_preprocessor(self, filename="preprocessor.joblib"):
-    # Save trained preprocessor to .joblib file
-    joblib.dump(self.preprocessor, filename)
-    print(f"Preprocessor saved to {filename}")
+    def save_preprocessor(self, filename="preprocessor.joblib"):
+        # Save trained preprocessor to .joblib file
+        joblib.dump(self.preprocessor, filename)
+        print(f"Preprocessor saved to {filename}")
 
-@staticmethod
-def load_preprocessor(filename="preprocessor.joblib"):
-    """Loads a preprocessor from a file."""
-    try:
-        # Try to load the preprocessor from file
-        preprocessor = joblib.load(filename)
-        print(f"Preprocessor loaded from {filename}")
-        return preprocessor
-    except FileNotFoundError:
-        # Handle case where file missing
-        print(f"Error: Preprocessor file not found at {filename}")
-        return None
+    @staticmethod
+    def load_preprocessor(filename="preprocessor.joblib"):
+        """Loads a preprocessor from a file."""
+        try:
+            # Try to load the preprocessor from file
+            preprocessor = joblib.load(filename)
+            print(f"Preprocessor loaded from {filename}")
+            return preprocessor
+        except FileNotFoundError:
+            # Handle case where file missing
+            print(f"Error: Preprocessor file not found at {filename}")
+            return None
 
 
 if __name__ == "__main__":
