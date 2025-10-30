@@ -40,6 +40,12 @@ class DataPreprocessor:
         except FileNotFoundError:
             print(f"Error: Dataset not found at {filepath}")
             return None, None, None, None
+        
+        # Check blank file or missing columns
+        required_cols = set(self.categorical_features + self.numeric_features + [self.target_col])
+        if df.empty or not required_cols.issubset(df.columns):
+            print("File is empty or missing required columns.")
+            return None, None, None, None
 
         # Select inputs using num/cat columns
         X = df[self.categorical_features + self.numeric_features]
