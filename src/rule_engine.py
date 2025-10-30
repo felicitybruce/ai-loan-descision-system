@@ -3,7 +3,7 @@ class RuleEngine:
     Parameters:
     - pd_threshold: Probability of default threshold.
     """
-    def __init__(self, pd_threshold=0.10, min_age=18, max_age=70, min_income=30000, min_employment_length=1, min_credit_score = 650, debt_to_income_ratio=0.36, max_delinquencies_2y=2):
+    def __init__(self, pd_threshold=0.10, min_age=18, max_age=75, min_income=15000, min_employment_length=1, min_credit_score = 650, debt_to_income_ratio=0.35, max_delinquencies_2y=1):
         self.pd_threshold = pd_threshold
         self.min_age = min_age
         self.max_age = max_age
