@@ -67,3 +67,7 @@ class RuleEngine:
             self.min_employment_length = min_employment_length
         if min_credit_score is not None:
             self.min_credit_score = min_credit_score
+        if debt_to_income_ratio is not None:
+            self.debt_to_income_ratio = debt_to_income_ratio
+        if max_delinquencies_2y is not None:
+            self.max_delinquencies_2y = max_delinquencies_2y
