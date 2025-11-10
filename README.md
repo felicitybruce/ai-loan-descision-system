@@ -31,6 +31,12 @@ To run the main loan decision system and see example decisions:
 python3 src/descision_system.py
 ```
 
+To run the streallit webapp from the root folder run:
+
+```bash
+python3 -m streamlit run main.py
+```
+
 ## Running Tests
 
 To run all tests:
